@@ -8,7 +8,7 @@ let gulp = require('gulp'),
     cssmin = require('gulp-cssmin');
 
 gulp.task('sass', function () {
-    return gulp.src('app/scss/style.scss') // Ищем файл, который нужен
+    return gulp.src('app/scss/**/*.scss') // Ищем файл, который нужен
         .pipe(sass({ outputStyle: 'compressed' })) // запускаем компил (В виде объекта задаем параметры компила)
         .pipe(rename({ suffix: '.min' })) // Переименовываем в нужное нам имя
         .pipe(autoPrefixer({
@@ -52,7 +52,7 @@ gulp.task('browser-sync', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('app/scss/style.scss', gulp.parallel('sass')); // следит за файлом и если есть изменения запускай таск
+    gulp.watch('app/scss/**/*.scss', gulp.parallel('sass')); // следит за файлом и если есть изменения запускай таск
     gulp.watch('app/*.html', gulp.parallel('html'));
     gulp.watch('app/js/*.js', gulp.parallel('js'));
 });
